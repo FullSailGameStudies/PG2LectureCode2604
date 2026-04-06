@@ -8,6 +8,19 @@ int main(int argc, char* args[])
 {
 	Day2 day2;
 
+	Console::SetCursorPosition(10,5);
+
+	Target target1;
+	target1.red = 255;
+	target1.blue = target1.green = 0;
+	target1.row = 10;
+	target1.col = 5;
+	bool isEqual = target1.Equals(5,10);
+	if (isEqual) 
+		std::cout << "Target hit!\n";
+	else		 
+		std::cout << "Target missed!\n";
+
 	int menuSelection = 0;
 	std::vector<std::string> menuOptions{
 		"1. Part A-1.0: Calling static methods",
