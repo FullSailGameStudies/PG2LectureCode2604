@@ -55,6 +55,8 @@ int main(int argc, char* args[])
 			//  Experiment with changing the colors.
 			//  Open the Console.h file (look in Misc/Console in Solution Explorer) to see how the methods are declared.
 			//
+			Console::Write("DC or Marvel? ");
+			Console::WriteLine("DC. Duh!", ConsoleColor::Cyan);
 			break;
 		}
 		case 2:
@@ -84,6 +86,8 @@ int main(int argc, char* args[])
 			//	Print the name that the user enters.
 			//	Open the Input.h file(look in Misc / Input in Solution Explorer) to see how the GetString is declared.
 			//
+			std::string name = Input::GetString("What is your name? ");
+			Console::WriteLine("Your name is " + name + ".", ConsoleColor::Magenta);
 			break;
 		}
 		case 6:
