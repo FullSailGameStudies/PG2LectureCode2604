@@ -4,9 +4,47 @@
 #include <Console.h>
 #include <Input.h>
 
+int Increment2(int num)
+{
+	return num + 1;
+}
+
+void Increment(int& num)//pass-by-reference (ALIAS)
+{
+	num++;//changes the variable in a different scope
+}
+//use reference to prevent a copy
+// when?
+//	- the parameter is a class, especially if it's a container
+void Printer(std::vector<int>& nummies)
+{
+	//range-based (foreach) loop
+	for (int& nummie : nummies)
+	{
+		std::cout << nummie << " ";
+	}
+	std::cout << "\n";
+
+	for (int i = 0; i < nummies.size(); i++)
+	{
+		std::cout << nummies[i] << " ";
+	}
+	std::cout << "\n";
+}
+
 int main(int argc, char* args[])
 {
-	Day2 day2;
+	Day2 day2; 
+	std::vector<int> numbers{ 1,2,3,4,5,6,7,8,9 };
+	Printer(numbers);
+
+	int nummie = 5;
+	Increment(nummie);
+	std::cout << nummie << "\n";
+
+	int& numRef = nummie;
+	numRef += 10;
+	std::cout << nummie << "\n";
 
 	Console::SetCursorPosition(10,5);
 

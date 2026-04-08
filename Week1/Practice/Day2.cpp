@@ -7,6 +7,24 @@
 //
 // Part B-1.2: Add a method definition for GetLights
 //
+void Day2::GetLights(std::vector<Target>& targets)
+{
+	for (int row = 0; row < 48; row++)
+	{
+		for (int col = 0; col < 48; col++)
+		{
+			Target target;
+			target.col = col;
+			target.row = row;
+			target.red = rand() % 256;
+			target.blue = rand() % 256;
+			target.green = rand() % 256;
+
+			targets.push_back(target);
+		}
+	}
+}
+
 
 //
 // Part B-2.2: Add a method definition for DrawLights
@@ -40,6 +58,7 @@ void Day2::PartB_1()
 		//
 		// Part B-1.3: call GetLights
 		//
+		GetLights(lights);
 
 		Map map(engine.Renderer(), 10);
 

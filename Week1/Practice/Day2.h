@@ -14,6 +14,7 @@ private:
 	//
 	// Part B-1.1: Add a method declaration for GetLights
 	//
+	void GetLights(std::vector<Target>& targets);
 
 	//
 	// Part B-2.1: Add a method declaration for DrawLights
