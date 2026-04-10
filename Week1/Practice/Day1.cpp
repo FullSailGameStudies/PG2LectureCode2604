@@ -351,7 +351,7 @@ void Day1::PartA_2()
 		// Part A-2.3: Call CreateTargets_PartA_2 and store the returned vector into the "targets" variable.
 		//
 		std::vector<Target> targets;
-		targets = CreateTargets_PartA_2(mapSize, colorRange);
+		targets = CreateTargets_PartA_2(mapSize);
 
 		float scale = 0.25f;
 		Player player(&engine, scale, 1, 1);

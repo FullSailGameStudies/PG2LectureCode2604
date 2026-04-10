@@ -4,7 +4,8 @@
 #include <Console.h>
 #include <Input.h>
 
-int Increment2(int num)
+//all default params have to be at the end of the param list
+int Increment2(int n1, int n2 = 1, int num=0)//pass-by-value
 {
 	return num + 1;
 }
@@ -32,10 +33,33 @@ void Printer(const std::vector<int>& nummies)
 	std::cout << "\n";
 }
 
+void Info(const std::vector<int>& numbers)
+{
+	//size() - # of elements in the vector
+	//capacity() - length of internal array
+	//size() <= capacity()
+	std::cout << "Size: " << numbers.size();
+	std::cout << " Capacity: " << numbers.capacity() << "\n";
+}
 int main(int argc, char* args[])
 {
 	Day2 day2; 
-	std::vector<int> numbers{ 1,2,2,4,5,6,2,2,9 };
+	std::vector<int> numbers;
+	numbers.reserve(10);
+	Info(numbers);//size: 0  capacity: 0?
+	for (int i = 0; i < 15; i++)
+	{
+		numbers.push_back(i);
+		Info(numbers);
+	}
+	std::vector<int> n2 = numbers;
+	std::vector<int> n3(numbers);
+	std::vector<int> n4;
+	n4.reserve(numbers.size());
+	for (int i = 0; i < numbers.size(); i++)
+	{
+		n4.push_back(numbers[i]);
+	}
 	//iterator
 	//numbers.begin() - iterator to the first item
 	//numbers.end() - iterator to the item AFTER the last item
@@ -73,6 +97,7 @@ int main(int argc, char* args[])
 
 	int nummie = 5;
 	Increment(nummie);
+	Increment2(10);
 	std::cout << nummie << "\n";
 
 	int& numRef = nummie;
@@ -80,6 +105,8 @@ int main(int argc, char* args[])
 	std::cout << nummie << "\n";
 
 	Console::SetCursorPosition(10,5);
+
+	Day1::CreateTargets_PartA_2(10);
 
 	Target target1;
 	target1.red = 255;
