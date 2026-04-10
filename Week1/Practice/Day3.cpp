@@ -173,7 +173,7 @@ void Day3::PartC_2()
 						current = noGreens;
 						break;
 					case SDLK_KP_3:
-					case SDLK_3://noBlues
+					case SDLK_3://noBlues 
 						current = noBlues;
 						break;
 					case SDLK_KP_4:
