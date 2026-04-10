@@ -7,7 +7,7 @@
 //
 // Part B-1.2: Add a method definition for GetLights
 //
-void Day2::GetLights(std::vector<Target>& targets)
+void Day2::GetLights(std::vector<Target>& targets) const
 {
 	for (int row = 0; row < 48; row++)
 	{
@@ -26,13 +26,42 @@ void Day2::GetLights(std::vector<Target>& targets)
 }
 
 
+
 //
 // Part B-2.2: Add a method definition for DrawLights
 //
+void Day2::DrawLights(const std::vector<Target>& targets, const Map& map) const
+{
+	//for (int i = 0; i < targets.size(); i++)
+	//{
+	//	map.DrawCell(targets[i].col, targets[i].row, targets[i].red, targets[i].green, targets[i].blue);
+	//}
+	for (auto& target : targets)
+	{
+		map.DrawCell(target.col, target.row, target.red, target.green, target.blue);
+	}
+	for (auto iter = targets.begin(); iter != targets.end(); iter++)
+	{
+		map.DrawCell(iter->col, iter->row, iter->red, iter->green, iter->blue);
+
+	}
+}
+
 
 //
 // Part B-3.2: Add a method definition for EraseLights
 //
+void Day2::EraseLights(std::vector<Target>& targets) const
+{
+	//reverse for loop
+	for (int i = targets.size() - 1; i >= 0; i--)
+	{
+		if (targets[i].red < 100)
+		{
+			targets.erase(targets.begin() + i);
+		}
+	}
+}
 
 void Day2::PartB_1()
 {
@@ -111,6 +140,7 @@ void Day2::PartB_2()
 		//
 		// Part B-1.3: call GetLights
 		//
+		GetLights(lights);
 
 		Map map(engine.Renderer(), 10);
 
@@ -131,6 +161,7 @@ void Day2::PartB_2()
 			//
 			// Part B-2.3: call DrawLights
 			//
+			DrawLights(lights, map);
 
 			//Update screen
 			engine.Present();
@@ -162,10 +193,12 @@ void Day2::PartB_3()
 		//
 		// Part B-1.3: call GetLights
 		//
+		GetLights(lights);
 
 		//
 		// Part B-3.3: call EraseLights
 		//
+		EraseLights(lights);
 
 
 		Map map(engine.Renderer(), 10);
@@ -187,6 +220,7 @@ void Day2::PartB_3()
 			//
 			// Part B-2.3: call DrawLights
 			//
+			DrawLights(lights, map);
 
 			//Update screen
 			engine.Present();

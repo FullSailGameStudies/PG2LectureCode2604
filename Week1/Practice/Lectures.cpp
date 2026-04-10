@@ -16,10 +16,10 @@ void Increment(int& num)//pass-by-reference (ALIAS)
 //use reference to prevent a copy
 // when?
 //	- the parameter is a class, especially if it's a container
-void Printer(std::vector<int>& nummies)
+void Printer(const std::vector<int>& nummies)
 {
 	//range-based (foreach) loop
-	for (int& nummie : nummies)
+	for (auto& nummie : nummies)
 	{
 		std::cout << nummie << " ";
 	}
@@ -35,8 +35,41 @@ void Printer(std::vector<int>& nummies)
 int main(int argc, char* args[])
 {
 	Day2 day2; 
-	std::vector<int> numbers{ 1,2,3,4,5,6,7,8,9 };
+	std::vector<int> numbers{ 1,2,2,4,5,6,2,2,9 };
+	//iterator
+	//numbers.begin() - iterator to the first item
+	//numbers.end() - iterator to the item AFTER the last item
+	//iterator to last item = numbers.end() - 1
+	//for (int i = 0; i < numbers.size(); i++)
+	//{
+	//	if (numbers[i] == 2)
+	//	{
+	//		numbers.erase(numbers.begin() + i);
+	//		i--;
+	//	}
+	//}
+
+	for (int i = 0; i < numbers.size(); )
+	{
+		if (numbers[i] == 2)
+		{
+			numbers.erase(numbers.begin() + i);
+		}
+		else
+		{
+			i++;
+		}
+	}
+	for (int i = numbers.size() - 1; i >= 0; i--)
+	{
+		if (numbers[i] == 2)
+		{
+			numbers.erase(numbers.begin() + i);
+		}
+	}
 	Printer(numbers);
+
+	const double PI = 3.14159;
 
 	int nummie = 5;
 	Increment(nummie);
