@@ -5,10 +5,33 @@
 #include "Day6.h"
 #include <Input.h>
 
+void Counter(int num)
+{
+	//if(num < 10) //exit condition (base case)
+	//{
+	//	std::cout << num << " ";
+	//	Counter(num + 1);//recursive condition
+	//}
+
+	if (num >= 10) return;
+
+	std::cout << num << " ";
+	Counter(num + 1);//recursive condition
+	Console::Write(num, (ConsoleColor)(rand() % 8));
+	std::cout << " ";
+}
 
 int main(int argc, char* args[])
 {
 	srand(static_cast<unsigned int>(time(NULL)));
+
+	for (int i = 0; i < 10; i++)
+	{
+		std::cout << i << " ";
+	}
+	std::cout << "\n";
+	Counter(0);
+
 
 	std::string hello = "Hello Week 2!";
 	for (auto& ch : hello)

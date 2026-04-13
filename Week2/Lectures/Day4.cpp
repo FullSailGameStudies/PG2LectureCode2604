@@ -66,8 +66,20 @@ void Day4::RecursionExample()
 //
 // Part A-1.1
 //
+void Bats(int i)
+{
+	if(i < 100)
+	{
+		std::cout << (char)78 << (char)65 << ' ';
+		//i++  vs  ++i
+		//i++ - post-increment
+		//++i - pre-increment
+		Bats(i+1);
+	}
+}
 void Day4::PartA_1_1()
 {
+	Bats(0);
 	char c[] = { '\n', 66, 65, 84, 77, 65, 78, 33, 33 };
 	for (auto ch : c) std::cout << ch;
 
@@ -79,8 +91,18 @@ void Day4::PartA_1_1()
 //
 // Part A-1.2
 //
+void ReverseWord(const std::string& word, int index)
+{
+	if (index >= 0)
+	{
+		std::cout << word[index];
+		ReverseWord(word, index - 1);
+	}
+}
 void Day4::PartA_1_2()
 {
+	std::string word = "Batman";
+	ReverseWord(word, word.size()-1);
 	std::cout << "\n";
 }
 
