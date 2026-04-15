@@ -4,6 +4,8 @@
 #include "Day5.h"
 #include "Day6.h"
 #include <Input.h>
+#include <map>
+#include <iomanip>
 
 void Counter(int num)
 {
@@ -24,6 +26,60 @@ void Counter(int num)
 int main(int argc, char* args[])
 {
 	srand(static_cast<unsigned int>(time(NULL)));
+
+	std::map<std::string, float> grades;
+	//2 ways to add key-value pairs
+	//  1) "easy" way. map[key] = value;
+	grades["Bruce"] = 100;
+	grades["Richard"] = 75;
+	grades["Richard"] = 85;//overwrite
+
+	//  2) "not-easy" way. map.insert(keyValuePair);
+	std::pair<std::string, float> student =
+		std::make_pair("Alfred", 50);
+	grades.insert(student);
+	//pair objects have a 'first' and a 'second'
+	student.second = 60;
+	auto wasInserted = grades.insert(student);//will NOT overwrite
+	if (wasInserted.second)
+	{
+		std::cout << "Student was inserted.\n";
+	}
+	else
+	{
+		std::cout << "Student was NOT inserted. Do you want to overwrite the grade?\n";
+	}
+	std::vector<std::string> students = {
+		"Garrett","Jacob","Christopher1","Christopher2","Kevin","Michael","Christian",
+"Kien","Aidyn","Gregory","Larry","Rodriguez"
+	};
+	for (auto& name : students)
+	{
+		grades[name] = (rand() % 10001)/100.0f;
+	}
+
+	std::cout << "\n\nPG2 2604\n";
+	for (auto it = grades.begin(); it != grades.end(); it++)
+	{
+		std::cout << it->first << " " << it->second << "\n";
+	}
+
+	std::cout << "\n\nPG2 2604\n";
+	//use structured bindings
+	for (auto& [name,grade] : grades)
+	{
+		std::cout << std::setw(15) << std::left << name << " ";
+		Console::SetForegroundColor(
+			//ternary operator
+			(grade < 59.5) ? ConsoleColor::Red :
+			(grade < 69.5) ? ConsoleColor::Yellow :
+			(grade < 79.5) ? ConsoleColor::Cyan :
+			(grade < 89.5) ? ConsoleColor::Magenta :
+			ConsoleColor::Green
+		);
+		std::cout << std::setw(7) << std::right << grade << "\n";
+		Console::Reset();
+	}
 
 	for (int i = 0; i < 10; i++)
 	{
