@@ -110,24 +110,41 @@ void Day5::PartB_2(int section)
 	{
 		Grouper grouper;
 
-		std::vector<Light> redLights;
-		redLights.reserve(48 * 48);
-		grouper.MakeRedLights(redLights);
-
 		std::vector<Light> allLights;
 		allLights.reserve(12 * 12);
 		grouper.MakeLights(allLights);
-
-		std::vector<Light> greenLights;
-		greenLights.reserve(51);
-		grouper.MakeGreenLights(greenLights);
-
 
 		std::map<ColorChannel, std::vector<Light>> groupedColors;
 
 		//
 		// TODO: (Lecture) Part B-2.1 fill the std::map
 		// 
+		for (auto& light : allLights)
+		{
+			ColorChannel temp;
+			if (light.red > light.green && light.red > light.blue)
+				temp = ColorChannel::RED;
+			else if (light.green > light.red && light.green > light.blue)
+				temp = ColorChannel::GREEN;
+			else
+				temp = ColorChannel::BLUE;
+
+			auto findChannel = groupedColors.find(temp);
+			//check not-found
+			if (findChannel == groupedColors.end())
+			{
+				//create a new vector
+				//add the light to the vector
+				//add the vector to the map for the channel
+				std::vector<Light> newLights{ light };
+				groupedColors[temp] = newLights;
+			}
+			else  //if found
+			{
+				std::vector<Light>& lights = findChannel->second;
+				lights.push_back(light);
+			}
+		}
 
 
 		switch (section)
@@ -141,6 +158,11 @@ void Day5::PartB_2(int section)
 			//
 			// TODO: (Lecture) Part B-2.2 loop over the std::map
 			//
+			for (auto& [channel,lightVec] : groupedColors)
+			{
+				grouper.DrawLights(screenMap, lightVec, columnRange, column, row);
+
+			}
 
 
 			//Update screen
@@ -158,6 +180,9 @@ void Day5::PartB_2(int section)
 			//
 			// TODO: (Lecture)  Part B-3 call std::map's find method
 			//
+			auto blues = groupedColors.find(ColorChannel::BLUE);
+			if (blues != groupedColors.end())
+				std::cout << "The blue channel has " << blues->second.size() << "\n";
 
 			for (auto& [channel, channelLights] : groupedColors)
 			{

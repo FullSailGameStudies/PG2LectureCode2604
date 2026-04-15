@@ -81,6 +81,16 @@ int main(int argc, char* args[])
 		Console::Reset();
 	}
 
+	std::string studentKey = "Batman";
+	//float studentGrade = grades[studentKey];
+	//find returns an iterator to the key-value pair OR end()
+	auto foundStudent = grades.find(studentKey);
+	//end() indicates NOT_FOUND
+	if (foundStudent == grades.end()) //not found
+		std::cout << "\n\n" << studentKey << " is not in the course.\n\n";
+	else
+		std::cout << "\n\n" << studentKey << " has a grade of " << foundStudent->second << "\n\n";
+
 	for (int i = 0; i < 10; i++)
 	{
 		std::cout << i << " ";
