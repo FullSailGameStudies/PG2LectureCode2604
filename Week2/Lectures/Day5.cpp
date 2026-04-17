@@ -204,6 +204,32 @@ void Day5::PartB_2(int section)
 			//
 			// TODO: (Lecture)  Part C-1 erasing from a std::map
 			//
+			foundBlues = groupedColors.find(ColorChannel::BLUE);
+			//did we find the blue channel
+			if (foundBlues == groupedColors.end())//not found
+			{
+				std::cout << "The Blue channel was not found.\n";
+			}
+			else  //found
+			{
+				int blueColor = 256;// rand() % 256;//0-255
+				int numRemoved = 0;
+				std::vector<Light>& blues = foundBlues->second;
+				for (int i = blues.size() - 1; i >= 0; i--)
+				{
+					if (blues[i].blue < blueColor)
+					{
+						numRemoved++;
+						blues.erase(blues.begin()+i);
+					}
+				}
+				std::cout << "erase " << numRemoved << " lights.\n";
+
+				if (blues.size() == 0)
+				{
+					groupedColors.erase(foundBlues);
+				}
+			}
 
 
 			for (auto& [channel, channelLights] : groupedColors)
