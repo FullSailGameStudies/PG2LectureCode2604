@@ -4,10 +4,16 @@
 #include "Day8.h"
 #include "Day9.h"
 #include "Input.h"
+#include <Card.h>
 
 
 int main(int argc, char* args[])
 {
+	Card cardyB;
+	cardyB.SetFace("Q");
+	cardyB.Suit("Diamonds");
+	std::cout << cardyB.GetFace() << " " << cardyB.Suit() << "\n";
+
     std::string hello = "Hello Week 3!";
     for (auto& ch : hello)
     {

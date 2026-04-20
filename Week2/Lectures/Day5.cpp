@@ -212,7 +212,7 @@ void Day5::PartB_2(int section)
 			}
 			else  //found
 			{
-				int blueColor = 256;// rand() % 256;//0-255
+				int blueColor = rand() % 256;//0-255
 				int numRemoved = 0;
 				std::vector<Light>& blues = foundBlues->second;
 				for (int i = blues.size() - 1; i >= 0; i--)

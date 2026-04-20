@@ -25,12 +25,22 @@ public:
 	}
 
 	//getter (accessor)
+	//  const methods
+	//  return type matches the type of the field
+	//  usually don't have parameters
+	//  simply return the field
 	int modelYear() const
 	{
 		return mModelYear;
 	}
 
 	//setter (mutator)
+	//  void return types
+	//  purpose is to update a field
+	//  has at least 1 parameter that is used
+	//		to change the field
+	//	cannot be a const method
+	//  good place for validation logic
 	void modelYear(int newModelYear)
 	{
 		if (newModelYear > 1908 && newModelYear < 2100)
@@ -40,9 +50,16 @@ public:
 	}
 
 private:
+	//FIELDS:
+	//  usually private to protect the data
+	//  naming conventions:
+	//		camelCasingNamingConvention
+	//		add something to make it different than other variables
+	//	    ex: m_  m   _
 	int mModelYear;
 	std::string mModel;
 	std::string mMake;
+
 
 	int mFuelLevel;
 	int mMaxFuelLevel;
