@@ -66,6 +66,15 @@
     <ClCompile Include="Card.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Deck.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FlyingCar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BlackjackCard.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Day7.h">
@@ -120,6 +129,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Card.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Color.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Deck.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FlyingCar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BlackjackCard.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

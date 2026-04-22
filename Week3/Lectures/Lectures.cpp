@@ -5,14 +5,12 @@
 #include "Day9.h"
 #include "Input.h"
 #include <Card.h>
+#include <FlyingCar.h>
 
 
 int main(int argc, char* args[])
 {
-	Card cardyB;
-	cardyB.SetFace("Q");
-	cardyB.Suit("Diamonds");
-	std::cout << cardyB.GetFace() << " " << cardyB.Suit() << "\n";
+	FlyingCar xCar(2027, "Tesla", "CyberPlane", 100, 0);
 
     std::string hello = "Hello Week 3!";
     for (auto& ch : hello)

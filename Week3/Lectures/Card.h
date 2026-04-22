@@ -3,6 +3,13 @@
 class Card
 {
 public:
+	Card(const std::string& face, const std::string& suit) :
+		face_(face),
+		suit_(suit)
+	{
+
+	}
+
 	//getters and setters can be defined in the header
 	const std::string& GetFace() const
 	{

@@ -1,16 +1,36 @@
 #pragma once
 #include <string>
 #include <iostream>
+#include <Color.h>
 
 class Car
 {
 public:
-	Car() : mMake("Ford"), mModel("A"), mModelYear(1908), mFuelLevel(0), mMaxFuelLevel(15)
-	{   }
+	//constructors
+	//  NO return type (not even void)
+	//  MUST have the same name as the class
+	//  can have as many as you need
+	//  can have any access modifier
+	//  IF you do NOT create a ctor, the compiler will give you a default ctor
+	//  IF you DO create a ctor, the compiler's default is no longer created
+	
+	//a default ctor (no parameters)
+	//Car() : mMake("Ford"), mModel("A"), mModelYear(1908), mFuelLevel(0), mMaxFuelLevel(15)
+	//{   }
 
-	Car(int year, std::string make, std::string model)
-		: mModelYear(year), mMake(make), mModel(model), mFuelLevel(0), mMaxFuelLevel(15)
-	{	}
+	Car(int year, std::string make, std::string model) :
+		//member initialization list
+		//   preferred way to initialize fields
+		mModelYear(year),
+		mMake(make),
+		mModel(model),
+		mFuelLevel(0),
+		mMaxFuelLevel(15)
+	{	
+		//mModelYear = year;
+		//mModel = model;
+		//mMake = make;
+	}
 	std::string vehicleInformation();
 
 	void refuel()
@@ -49,7 +69,7 @@ public:
 		}
 	}
 
-private:
+protected:
 	//FIELDS:
 	//  usually private to protect the data
 	//  naming conventions:
@@ -59,6 +79,8 @@ private:
 	int mModelYear;
 	std::string mModel;
 	std::string mMake;
+
+	Color mExterior;
 
 
 	int mFuelLevel;
