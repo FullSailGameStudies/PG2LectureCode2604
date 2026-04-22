@@ -107,6 +107,7 @@ void Day7::PartA_1()
 						//
 						Card cardyB("Q", "Diamonds");
 						std::cout << cardyB.GetFace() << " " << cardyB.Suit() << "\n";
+						std::cout << cardyB.Value() << "\n";
 
 						Color clr;
 						clr.red = 255;

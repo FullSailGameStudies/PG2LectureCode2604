@@ -75,6 +75,7 @@ void Day8::PartB_1()
 						//
 						BlackjackCard cardyB("Q", "Diamonds");
 						std::cout << cardyB.GetFace() << " " << cardyB.Suit() << "\n";
+						std::cout << cardyB.Value() << "\n";
 
 						pos cardSize = GameTextures::CardSize(scale);
 						int x = 5;

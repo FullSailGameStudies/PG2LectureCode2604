@@ -7,9 +7,29 @@
 #include <Card.h>
 #include <FlyingCar.h>
 
+//int Add(int n1, int n2) {}
+//int Add(int n1, int n2, int n3) {}
+
+class BankAccount
+{
+public:
+	BankAccount(float balance) : balance_(balance) {}
+
+	BankAccount operator+(const BankAccount& other)
+	{
+		BankAccount result(balance_ + other.balance_);
+		return result;
+	}
+private:
+	float balance_;
+};
 
 int main(int argc, char* args[])
 {
+	BankAccount b1(100);
+	BankAccount b2(1000);
+	BankAccount b3 = b1 + b2;
+
 	FlyingCar xCar(2027, "Tesla", "CyberPlane", 100, 0);
 
     std::string hello = "Hello Week 3!";

@@ -10,6 +10,8 @@ public:
 
 	}
 
+	virtual int Value();
+
 	//getters and setters can be defined in the header
 	const std::string& GetFace() const
 	{
