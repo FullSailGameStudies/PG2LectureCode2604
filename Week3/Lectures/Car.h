@@ -31,7 +31,10 @@ public:
 		//mModel = model;
 		//mMake = make;
 	}
-	std::string vehicleInformation();
+
+	virtual ~Car() = default;
+
+	virtual std::string vehicleInformation();
 
 	void refuel()
 	{

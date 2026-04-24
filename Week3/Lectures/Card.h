@@ -9,6 +9,7 @@ public:
 	{
 
 	}
+	virtual ~Card() = default;
 
 	virtual int Value();
 

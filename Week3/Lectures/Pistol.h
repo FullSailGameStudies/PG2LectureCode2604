@@ -8,6 +8,10 @@ public:
 	{
 
 	}
+	Pistol(int range, int damage) : Weapon(range, damage)
+	{
+
+	}
 	int calcDamage() override
 	{
 		return 10;

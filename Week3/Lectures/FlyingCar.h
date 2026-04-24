@@ -12,6 +12,7 @@ public:
 	{
 		//do NOT duplicate the base ctor logic
 	}
+	std::string vehicleInformation() override;
 
 	int MaxAltitude() const { return maxAlt_; }
 	int Altitude() const { return alt_; }
