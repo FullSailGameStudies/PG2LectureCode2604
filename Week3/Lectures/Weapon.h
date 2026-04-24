@@ -9,7 +9,9 @@ public:
 	Weapon(int range, int damage);
 
 	virtual void showMe();
-	int calcDamage();
+
+	//a pure virtual function
+	virtual int calcDamage() = 0;
 
 	int range() const
 	{

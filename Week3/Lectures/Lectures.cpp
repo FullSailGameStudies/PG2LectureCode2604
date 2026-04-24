@@ -6,6 +6,8 @@
 #include "Input.h"
 #include <Card.h>
 #include <FlyingCar.h>
+#include <Weapon.h>
+#include <Pistol.h>
 
 //int Add(int n1, int n2) {}
 //int Add(int n1, int n2, int n3) {}
@@ -24,8 +26,21 @@ private:
 	float balance_;
 };
 
+void Counter()
+{
+	static int i = 0;
+	std::cout << i << " ";
+	i++;
+}
+
 int main(int argc, char* args[])
 {
+	for (int i = 0; i < 10; i++)
+	{
+		Counter();
+	}
+	//Weapon wpn(10, 40);
+	Pistol pewpew;
 	BankAccount b1(100);
 	BankAccount b2(1000);
 	BankAccount b3 = b1 + b2;
