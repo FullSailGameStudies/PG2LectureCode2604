@@ -136,6 +136,7 @@
     <ClCompile Include="Day10.cpp" />
     <ClCompile Include="Day11.cpp" />
     <ClCompile Include="Lectures.cpp" />
+    <ClCompile Include="Person.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Textures.cpp" />
   </ItemGroup>
@@ -146,6 +147,7 @@
     <ClInclude Include="..\..\Shared\PG2Graphics\PG2Texture.h" />
     <ClInclude Include="Day10.h" />
     <ClInclude Include="Day11.h" />
+    <ClInclude Include="Person.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="SubTexture.h" />
     <ClInclude Include="Textures.h" />

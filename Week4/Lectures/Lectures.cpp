@@ -5,6 +5,7 @@
 #include "Input.h"
 #include <fstream>
 #include <sstream> //for the stringstream class
+#include <Person.h>
 
 
 int main(int argc, char* args[])
@@ -88,6 +89,35 @@ int main(int argc, char* args[])
 	//  good professional practice: 
 	//		close the file ASAP!!!
 	inFile.close();
+
+	Person bruce("Bruce Wayne", 35);
+	std::ofstream personFile("bruce.csv");
+	if (personFile.is_open())
+	{
+		bruce.SerializeCSV(personFile, '@');
+	}
+	else
+	{
+		std::cout << "File could not be opened.\n";
+	}
+	personFile.close();
+
+	Person csvPerson("Robin;12", ';');
+	std::ifstream inpersonFile("bruce.csv");
+	if (inpersonFile.is_open())
+	{
+		//read a line from the file
+		std::string line;
+		std::getline(inpersonFile, line);
+
+		//create a person with the line
+		Person inPerson(line, '@');
+	}
+	else
+	{
+		std::cout << "File could not be opened.\n";
+	}
+	inpersonFile.close();
 
     std::string hello = "Hello Week 4!";
     for (auto& ch : hello)
