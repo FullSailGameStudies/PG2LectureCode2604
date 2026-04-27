@@ -3,10 +3,92 @@
 #include "Day10.h"
 #include "Day11.h"
 #include "Input.h"
+#include <fstream>
+#include <sstream> //for the stringstream class
 
 
 int main(int argc, char* args[])
 {
+	//<fstream>
+	// ifstream, ofstream
+
+	//1) open the file
+	//	where is the file? (path)
+	std::string fileName = "2604.csv";
+	std::string path = "C:/temp/2604/";
+	std::string finalPath = path + fileName;
+	//ONLY IF the path exists, 
+	// it will create the file
+	// it will NOT create the path if it doesn't exists
+	std::ofstream outFile(finalPath);
+	char delimiter = '$';
+	if (outFile.is_open())
+	{
+		//2) write to the file
+		// << - insertion operator
+		outFile << "Batman is the best." << delimiter << 5;
+		outFile << delimiter << 13.7 << delimiter << "true";
+	}
+	else
+	{
+		std::cout << finalPath << " could not be opened.\n";
+	}
+
+	//3) close the file
+	//  good professional practice: 
+	//		close the file ASAP!!!
+	outFile.close();
+
+	//1) open the file
+	std::ifstream inFile(finalPath);
+	if (inFile.is_open())
+	{
+		//use getline to read lines from the file
+		//read from the stream UNTIL it finds a '\n' OR
+		//  reaches the end of the stream
+		std::string line;
+		std::getline(inFile, line);
+
+		std::cout << line << "\n";
+
+		//process the line (parsing)
+		std::string data;
+		std::stringstream lineStream(line);
+		//read from the stream UNTIL it finds a delimiter OR
+		//  reaches the end of the stream
+		std::getline(lineStream, data, delimiter);
+		std::cout << data << "\n";
+
+		std::getline(lineStream, data, delimiter);
+		int iData = std::stoi(data);
+		std::cout << iData << "\n";
+
+		std::getline(lineStream, data, delimiter);
+		double dData = std::stod(data);
+		std::cout << dData << "\n";
+
+		std::getline(lineStream, data, delimiter);
+		//use a try-catch to handle exceptions
+		try
+		{
+			bool bData = std::stoi(data);
+		}
+		catch (const std::exception&)
+		{
+			//handle the exception
+			std::cout << "Error processing bool bData: " << data << "\n";
+		}
+	}
+	else
+	{
+		std::cout << finalPath << " could not be opened.\n";
+	}
+
+	//3) close the file
+	//  good professional practice: 
+	//		close the file ASAP!!!
+	inFile.close();
+
     std::string hello = "Hello Week 4!";
     for (auto& ch : hello)
     {
