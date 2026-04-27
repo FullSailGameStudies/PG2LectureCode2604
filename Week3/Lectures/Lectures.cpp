@@ -84,10 +84,11 @@ int main(int argc, char* args[])
 	Car road(1988, "Ford", "Mustang GT 5.0");
 	FlyingCar xCar(2027, "Tesla", "CyberPlane", 100, 0);
 	Car* currentCar = &road;//point it to road
+	Car::reporting();
 	//UPCASTING
 	// pointing UP the hierarchy
 	currentCar = &xCar;//point it to xCar
-
+	std::cout << xCar.modelYear() << "\n";
 	{
 		std::vector<Car*> garage;
 		garage.push_back(new Car(1988, "Ford", "Mustang GT 5.0"));//copies

@@ -41,6 +41,8 @@ public:
 		mFuelLevel = mMaxFuelLevel;
 	}
 
+	//static methods do NOT have a'this' pointer
+	// can ONLY access other STATIC members (data and methods)
 	static void reporting()
 	{
 		//std::cout << "Model year: " << mModelYear << "\n"; //ERROR! cannot access non-static members
@@ -52,9 +54,13 @@ public:
 	//  return type matches the type of the field
 	//  usually don't have parameters
 	//  simply return the field
+
+	//non-static methods have a 'hidden' parameter
+	//  'this' - is a pointer to the object it was called on
+	//  can access non-static AND static members
 	int modelYear() const
 	{
-		return mModelYear;
+		return this->mModelYear;
 	}
 
 	//setter (mutator)
